@@ -119,7 +119,7 @@ def rand(a, b):
 
 def create_user(db):
 
-    user = db.query(User).filter(User.email == "alex@demo.com").first()
+    user = db.query(User).filter(User.email == "demo@creatorinsight.app").first()
 
     if user:
         db.delete(user)
@@ -127,12 +127,12 @@ def create_user(db):
 
     user = User(
         id=uid(),
-        email="alex@demo.com",
-        username="alexkimcreates",
-        full_name="Alex Kim",
-        hashed_password=pwd.hash("demo1234"),
-        niche="lifestyle",
-        bio="Lifestyle creator focused on productivity, habits, and mindful living.",
+        email="demo@creatorinsight.app",
+        username="creator_demo",
+        full_name="CreatorInsight Demo",
+        hashed_password=pwd.hash("Demo1234!"),
+        niche="creator economy",
+        bio="Demo account for CreatorInsight platform.",
         is_active=True,
         onboarded=True,
         is_verified=True,
@@ -158,7 +158,7 @@ def create_social_accounts(db, user):
                 user_id=user.id,
                 platform=platform,
                 platform_user_id=f"{platform}_{random.randint(10000,99999)}",
-                platform_username=f"alex_{platform}",
+                platform_username=f"demo_{platform}",
                 access_token="seed_token",
                 follower_count=cfg["followers"],
                 is_active=True,
@@ -184,10 +184,8 @@ def create_analytics(db, user):
             engagement = cfg["eng"] + rand(-1.8, 2.4)
 
             reach = int(followers * rand(0.25, 0.9))
-
             impressions = int(reach * rand(1.1, 2.3))
 
-            # viral spike chance
             if random.random() < 0.05:
                 reach *= random.randint(2, 5)
                 impressions *= random.randint(2, 6)
@@ -229,7 +227,7 @@ def create_posts(db, user):
 
     posts = []
 
-    for i in range(100):
+    for _ in range(100):
 
         caption = random.choice(POST_CAPTIONS)
 
@@ -263,25 +261,19 @@ def create_post_metrics(db, posts):
         for platform in post.platforms:
 
             base_views = random.randint(2000, 80000)
-
             multiplier = rand(0.6, 1.6)
 
-            # viral chance
             if random.random() < 0.1:
                 multiplier *= random.randint(2, 5)
 
             views = int(base_views * multiplier)
 
             likes = int(views * rand(0.04, 0.12))
-
             comments = int(likes * rand(0.02, 0.08))
-
             shares = int(likes * rand(0.03, 0.1))
-
             saves = int(likes * rand(0.05, 0.2))
 
             reach = int(views * rand(0.7, 0.95))
-
             impressions = int(reach * rand(1.1, 2.0))
 
             engagement_rate = round(
@@ -425,8 +417,8 @@ def seed():
 
     print("")
     print("DEMO ACCOUNT READY")
-    print("Email: alex@demo.com")
-    print("Password: demo1234")
+    print("Email: demo@creatorinsight.app")
+    print("Password: Demo1234!")
 
 
 if __name__ == "__main__":
