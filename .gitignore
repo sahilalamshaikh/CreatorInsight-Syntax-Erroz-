@@ -1,0 +1,66 @@
+# ------------------------------
+
+# Python
+
+# ------------------------------
+
+**pycache**/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environments
+
+.venv/
+venv/
+env/
+
+# Environment variables
+
+.env
+.env.*
+.env
+backend/.env
+backend/.env.*
+
+# Logs
+
+*.log
+
+# SQLite database
+
+*.db
+*.sqlite3
+
+# Alembic cache
+
+alembic/**pycache**/
+
+# Pytest
+
+.pytest_cache/
+.coverage
+htmlcov/
+
+# VS Code / IDE
+
+.vscode/
+.idea/
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# Build
+
+dist/
+build/
+*.egg-info/
+
+# Node (if frontend added later)
+
+node_modules/
+.next/
+out/
